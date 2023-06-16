@@ -1,0 +1,263 @@
+<!-- component -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/tailwind/tailwind.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/activeTable.js"></script>
+    <script type="module" src="../js/fetch.js"></script>
+    <title>Presensi Mahasiswa</title>
+  </head>
+
+  <body>
+    <div class="bg-gradient-to-r from-blue-300 to-indigo-300">
+      <div class="grid grid-cols-12 gap-0">
+        <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-9 xxl:col-span-9 px-6 py-6">
+          <div class="grid grid-cols-12 gap-6">
+            <div class="col-span-12 sm:col-span-12 md:col-span-4 lg:col-span-4 xxl:col-span-4">
+              <!-- Start Nav Bar -->
+              <nav class="bg-white p-3 rounded-xl shadow-xl flex items-center justify-center">
+                <div class="flex space-x-6 items-center">
+                  <div class="flex space-x-2 items-center">
+                    <p class="font-semibold">Presensi Mahasiswa</p>
+                    <div class="bg-gray-800 rounded-md p-2 flex items-center">
+                      <i class="fab fa-github-alt fa-sm text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+              <!-- End Nav Bar -->
+            </div>
+            <div class="col-span-12 sm:col-span-12 md:col-span-8 lg:col-span-8 xxl:col-span-8">
+              <!-- Start Card List -->
+              <div x-data="{ active: 1 }" class="bg-white p-4 rounded-xl shadow-xl flex items-center justify-center grid grid-cols-5 md:grid-cols-7">
+                <a href="#" onclick="showPresensi()" class="flex space-x-2 items-center text-gray-400 m-auto" x-bind:class="{'text-indigo-600 border-b-4 border-indigo-600': active === 1 }" x-on:click.prevent="active = 1">
+                  <p class="font-semibold text-sm">Presensi</p>
+                </a>
+                <a href="#" onclick="showMahasiswa()" class="flex space-x-2 items-center text-gray-400 m-auto" x-bind:class="{'text-indigo-600 border-b-4 border-indigo-600': active === 2 }" x-on:click.prevent="active = 2">
+                  <p class="font-semibold text-sm">Mhs</p>
+                </a>
+                <a href="#" onclick="showKelas()" class="flex space-x-2 items-center text-gray-400 m-auto" x-bind:class="{'text-indigo-600 border-b-4 border-indigo-600': active === 3 }" x-on:click.prevent="active = 3">
+                  <p class="font-semibold text-sm">Kelas</p>
+                </a>
+                <a href="#" onclick="showMatkul()" class="flex space-x-2 items-center text-gray-400 m-auto" x-bind:class="{'text-indigo-600 border-b-4 border-indigo-600': active === 4 }" x-on:click.prevent="active = 4">
+                  <p class="font-semibold text-sm">Matkul</p>
+                </a>
+                <a href="#" onclick="showDosen()" class="flex space-x-2 items-center text-gray-400 m-auto" x-bind:class="{'text-indigo-600 border-b-4 border-indigo-600': active === 5 }" x-on:click.prevent="active = 5">
+                  <p class="font-semibold text-sm">Dosen</p>
+                </a>
+                <a href="#" onclick="showProdi()" class="flex space-x-2 items-center text-gray-400 m-auto pt-2 md:pt-0" x-bind:class="{'text-indigo-600 border-b-4 border-indigo-600': active === 6 }" x-on:click.prevent="active = 6">
+                  <p class="font-semibold text-sm">Prodi</p>
+                </a>
+                <a href="#" onclick="showRuangan()" class="flex space-x-2 items-center text-gray-400 m-auto pt-2 md:pt-0" x-bind:class="{'text-indigo-600 border-b-4 border-indigo-600': active === 7 }" x-on:click.prevent="active = 7">
+                  <p class="font-semibold text-sm">Ruangan</p>
+                </a>
+              </div>
+              <!-- End Card List -->
+            </div>
+            <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-12 xxl:col-span-12">
+              <!-- Start Card List -->
+              <div class="bg-white p-4 rounded-xl shadow-xl items-center justify-center mt-1">
+                <div class="space-x-0 items-center">
+                  <p class="font-semibold text-base"></p>
+                  <div class="overflow-hidden border border-coolGray-100 rounded-md shadow-dashboard">
+                    <div class="overflow-x-auto">
+                      <table class="w-full" id="iniTabelPresensi">
+                        <p class="font-semibold text-base ml-2 mt-2 mb-2" id="text">Data Presensi</p>
+                        <tr class="whitespace-nowrap h-11 bg-coolGray-50 bg-opacity-80 border-b border-coolGray-100">
+                          <th class="px-4 font-semibold text-xs text-coolGray-500 uppercase text-left">
+                            <div class="flex items-center">
+                              <p>Nama & NPM</p>
+                            </div>
+                          </th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Kelas & Jurusan</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Status</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Matkul & Dosen</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Hari Kuliah</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Jam Masuk & Keluar (WIB)</th>
+                          <th class="whitespace-nowrap font-semibold text-xs text-coolGray-500 uppercase text-center"></th>
+                        </tr>
+
+                        <!-- ISI TABEL DARI SINI (BUAT pada FILe tabel.js) -->
+
+                        <!-- ISI TABEL SAMPAI DISINI (BUAT pada FILE tabel.js) -->
+                      </table>
+                      <table class="w-full" id="iniTabelMahasiswa" style="display: none">
+                        <!-- <p class="font-semibold text-base ml-2 mt-2 mb-2">Data Mahasiswa</p> -->
+                        <tr class="whitespace-nowrap h-11 bg-coolGray-50 bg-opacity-80 border-b border-coolGray-100">
+                          <th class="px-4 font-semibold text-xs text-coolGray-500 uppercase text-left">
+                            <div class="flex items-center">
+                              <p>Nama</p>
+                            </div>
+                          </th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">NPM</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Kelas</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Jurusan</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Fakultas</th>
+                          <th class="whitespace-nowrap font-semibold text-xs text-coolGray-500 uppercase text-center"></th>
+                        </tr>
+
+                        <!-- ISI TABEL DARI SINI (BUAT pada FILe tabel.js) -->
+
+                        <!-- ISI TABEL SAMPAI DISINI (BUAT pada FILE tabel.js) -->
+                      </table>
+                      <table class="w-full" id="iniTabelKelas" style="display: none">
+                        <!-- <p class="font-semibold text-base ml-2 mt-2 mb-2">Data Kelas</p> -->
+                        <tr class="whitespace-nowrap h-11 bg-coolGray-50 bg-opacity-80 border-b border-coolGray-100">
+                          <th class="px-4 font-semibold text-xs text-coolGray-500 uppercase text-left">
+                            <div class="flex items-center">
+                              <p>Kode Kelas</p>
+                            </div>
+                          </th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Nama Kelas</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Kapasitas</th>
+                          <th class="whitespace-nowrap font-semibold text-xs text-coolGray-500 uppercase text-center"></th>
+                        </tr>
+
+                        <!-- ISI TABEL DARI SINI (BUAT pada FILe tabel.js) -->
+
+                        <!-- ISI TABEL SAMPAI DISINI (BUAT pada FILE tabel.js) -->
+                      </table>
+                      <table class="w-full" id="iniTabelProdi" style="display: none">
+                        <!-- <p class="font-semibold text-base ml-2 mt-2 mb-2">Data Prodi</p> -->
+                        <tr class="whitespace-nowrap h-11 bg-coolGray-50 bg-opacity-80 border-b border-coolGray-100">
+                          <th class="px-4 font-semibold text-xs text-coolGray-500 uppercase text-left">
+                            <div class="flex items-center">
+                              <p>Nama Prodi</p>
+                            </div>
+                          </th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Ketua Prodi</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Fakultas</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Kapasitas</th>
+                          <th class="whitespace-nowrap font-semibold text-xs text-coolGray-500 uppercase text-center"></th>
+                        </tr>
+
+                        <!-- ISI TABEL DARI SINI (BUAT pada FILe tabel.js) -->
+
+                        <!-- ISI TABEL SAMPAI DISINI (BUAT pada FILE tabel.js) -->
+                      </table>
+                      <table class="w-full" id="iniTabelMatkul" style="display: none">
+                        <!-- <p class="font-semibold text-base ml-2 mt-2 mb-2">Data Matkul</p> -->
+                        <tr class="whitespace-nowrap h-11 bg-coolGray-50 bg-opacity-80 border-b border-coolGray-100">
+                          <th class="px-4 font-semibold text-xs text-coolGray-500 uppercase text-left">
+                            <div class="flex items-center">
+                              <p>Nama, Kode, & SKS</p>
+                            </div>
+                          </th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Dosen Pengampu</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Hari Kuliah</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Jam Masuk & Keluar (WIB)</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Ruangan</th>
+                          <th class="whitespace-nowrap font-semibold text-xs text-coolGray-500 uppercase text-center"></th>
+                        </tr>
+
+                        <!-- ISI TABEL DARI SINI (BUAT pada FILe tabel.js) -->
+
+                        <!-- ISI TABEL SAMPAI DISINI (BUAT pada FILE tabel.js) -->
+                      </table>
+                      <table class="w-full" id="iniTabelDosen" style="display: none">
+                        <!-- <p class="font-semibold text-base ml-2 mt-2 mb-2">Data Dosen</p> -->
+                        <tr class="whitespace-nowrap h-11 bg-coolGray-50 bg-opacity-80 border-b border-coolGray-100">
+                          <th class="px-4 font-semibold text-xs text-coolGray-500 uppercase text-left">
+                            <div class="flex items-center">
+                              <p>Nama Dosen</p>
+                            </div>
+                          </th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">NIK</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Bidang Studi</th>
+                          <th class="whitespace-nowrap font-semibold text-xs text-coolGray-500 uppercase text-center"></th>
+                        </tr>
+
+                        <!-- ISI TABEL DARI SINI (BUAT pada FILe tabel.js) -->
+
+                        <!-- ISI TABEL SAMPAI DISINI (BUAT pada FILE tabel.js) -->
+                      </table>
+                      <table class="w-full" id="iniTabelRuangan" style="display: none">
+                        <!-- <p class="font-semibold text-base ml-2 mt-2 mb-2">Data Ruangan</p> -->
+                        <tr class="whitespace-nowrap h-11 bg-coolGray-50 bg-opacity-80 border-b border-coolGray-100">
+                          <th class="px-4 font-semibold text-xs text-coolGray-500 uppercase text-left">
+                            <div class="flex items-center">
+                              <p>Nama Ruangan</p>
+                            </div>
+                          </th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Kapasitas</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Gedung</th>
+                          <th class="whitespace-nowrap px-4 font-semibold text-xs text-coolGray-500 uppercase text-center">Lantai</th>
+                          <th class="whitespace-nowrap font-semibold text-xs text-coolGray-500 uppercase text-center"></th>
+                        </tr>
+
+                        <!-- ISI TABEL DARI SINI (BUAT pada FILe tabel.js) -->
+
+                        <!-- ISI TABEL SAMPAI DISINI (BUAT pada FILE tabel.js) -->
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Card List -->
+            </div>
+          </div>
+        </div>
+        <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-3 xxl:col-span-3 px-6 py-6">
+          <!-- Start profile Card -->
+          <div class="bg-white rounded-xl p-4 shadow-xl">
+            <div class="flex flex-col justify-center items-center">
+              <div class="w-32 h-32 rounded-full bg-gray-300 border-2 border-white mt-2">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVxhAxJ4D7MOeTTj6kR9PBeZonW5HM7giKjTbEmR-HMBwf3G1VqGnlwpO1kWrdyIZu8_U&usqp=CAU" class="rounded-full w-auto" />
+              </div>
+              <p class="font-semibold text-xl mt-1">Fatwa</p>
+              <p class="font-semibold text-base text-gray-400">1214038</p>
+
+              <div class="relative p-4 rounded-lg shadow-xl w-full bg-cover bg-center h-32 mt-4" style="background-image: url('https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')">
+                <div class="absolute inset-0 bg-gray-800 bg-opacity-50"></div>
+                <div class="relative w-full h-full px-4 sm:px-6 lg:px-4 flex items-center justify-center">
+                  <div>
+                    <h3 class="text-center text-white text-lg">Teknik Informatika</h3>
+                    <h3 class="text-center text-white text-3xl mt-2 font-bold">2B</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End profile Card -->
+          <!-- Start Card List -->
+          <div class="bg-white p-3 rounded-xl shadow-xl flex items-center justify-between mt-4">
+            <div class="flex space-x-6 items-center">
+              <img src="https://i.pinimg.com/originals/25/0c/a0/250ca0295215879bd0d53e3a58fa1289.png" class="w-auto h-24 rounded-lg" />
+              <div>
+                <p class="font-semibold text-base">Connect Device</p>
+                <p class="font-semibold text-sm text-gray-400">Autorize device for transfer</p>
+              </div>
+            </div>
+
+            <!-- <div class="flex space-x-2 items-center">
+              <div class="bg-gray-300 rounded-md p-2 flex items-center">
+                <i class="fas fa-chevron-right fa-sm text-black"></i>
+              </div>
+            </div> -->
+          </div>
+          <!-- End Card List -->
+          <!-- Start Card List -->
+          <div class="bg-white rounded-xl p-4 shadow-xl mt-4">
+            <div class="flex flex-col justify-center items-center">
+              <img src="https://cdn3d.iconscout.com/3d/premium/thumb/upload-social-media-post-4291893-3569926.png" class="w-auto h-40 rounded-lg" />
+              <p class="font-semibold text-xl mt-1">Upload Data</p>
+              <p class="font-semibold text-sm text-gray-400 text-center">
+                Make your data as zip file <br />
+                and drag here
+              </p>
+              <button class="mt-4 bg-indigo-600 hover:bg-indigo-700 shadow-xl text-white font-bold py-2 px-4 rounded">Upload Now</button>
+            </div>
+          </div>
+          <!-- End Card List -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
