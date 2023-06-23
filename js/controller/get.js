@@ -1,48 +1,87 @@
 import { addInner } from "https://bukulapak.github.io/element/process.js";
 import { getRandomColor, getRandomColorName } from "https://bukulapak.github.io/image/process.js";
-import { isiTabel, isiTabelmhs, isiTabeldsn } from "../temp/table.js";
-export function isiTablePresensi(results) {
-  results.forEach(isiRowPresensi);
+import { TabelProyek, Tabelmahasiswa, Tabeldosen} from "../temp/table.js";
+export function test(results) {
+  console.log(results)
 }
-export function isiTableMahasiswa(results) {
+export function test2(results) {
+  console.log(results)
+}
+export function isiTabelProyek(results) {
+  results.forEach(isiRowProyek);
+}
+export function isiTabelMahasiswa(results) {
   results.forEach(isiRowMahasiswa);
 }
-export function isiTableDosen(results) {
+export function isiTabelDosen(results) {
   results.forEach(isiRowDosen);
 }
 
-function isiRowPresensi(value) {
-  let content = isiTabel
+function isiRowProyek(value) {
+  if (value.tipe_proyek == "Proyek 1"){
+  let content = TabelProyek
       .replace("#NAMA#", value.biodata_mahasiswa.nama)
       .replace("#NPM#", value.biodata_mahasiswa.npm)
-      .replace("#JURUSAN#", value.biodata_mahasiswa.jurusan.nama)
-      .replace("#PRODI#", value.biodata_mahasiswa.prodi.nama)
-      .replace("#DOSENPEMBIMBING#", value.dosen_pembimbing.nama)
-      .replace("#DOSENPENGUJI#", value.dosen_penguji.nama)
-      .replace("#JUDUL#", value.judul)
+      .replace("#KELAS#", value.biodata_mahasiswa.kelas)
+      .replace("#NAMAPARTNER#", value.partner_mahasiswa.nama)
+      .replace("#NPMPARTNER#", value.partner_mahasiswa.npm)
+      .replace("#KELASPARTNER#", value.partner_mahasiswa.kelas)
       .replace("#TANGGALSIDANG#", value.tanggal_sidang)
+      .replace("#RUANGSIDANG#", value.ruang_sidang)
       .replace("#WARNA#", getRandomColor())
       .replace(/#WARNALOGO#/g, getRandomColorName());
-  addInner("iniTabel", content);
+  addInner("iniTabelproyek1", content);
+  } else if (value.tipe_proyek == "Proyek 2"){
+  let content = TabelProyek
+      .replace("#NAMA#", value.biodata_mahasiswa.nama)
+      .replace("#NPM#", value.biodata_mahasiswa.npm)
+      .replace("#KELAS#", value.biodata_mahasiswa.kelas)
+      .replace("#NAMAPARTNER#", value.partner_mahasiswa.nama)
+      .replace("#NPMPARTNER#", value.partner_mahasiswa.npm)
+      .replace("#KELASPARTNER#", value.partner_mahasiswa.kelas)
+      .replace("#TANGGALSIDANG#", value.tanggal_sidang)
+      .replace("#RUANGSIDANG#", value.ruang_sidang)
+      .replace("#WARNA#", getRandomColor())
+      .replace(/#WARNALOGO#/g, getRandomColorName());
+  addInner("iniTabelproyek2", content);
+  } else if (value.tipe_proyek == "Proyek 3"){
+  let content = TabelProyek
+      .replace("#NAMA#", value.biodata_mahasiswa.nama)
+      .replace("#NPM#", value.biodata_mahasiswa.npm)
+      .replace("#KELAS#", value.biodata_mahasiswa.kelas)
+      .replace("#NAMAPARTNER#", value.partner_mahasiswa.nama)
+      .replace("#NPMPARTNER#", value.partner_mahasiswa.npm)
+      .replace("#KELASPARTNER#", value.partner_mahasiswa.kelas)
+      .replace("#TANGGALSIDANG#", value.tanggal_sidang)
+      .replace("#RUANGSIDANG#", value.ruang_sidang)
+      .replace("#WARNA#", getRandomColor())
+      .replace(/#WARNALOGO#/g, getRandomColorName());
+  addInner("iniTabelproyek3", content);
+  }
 }
+
 function isiRowMahasiswa(value) {
-  let content = isiTabelmhs
+  let content = Tabelmahasiswa
   .replace("#NAMA#", value.nama)
     .replace("#NPM#", value.npm)
+    .replace("#KELAS#", value.kelas)
     .replace("#JURUSAN#", value.jurusan.nama)
     .replace("#PRODI#", value.prodi.nama)
-    .replace("#KELAS#", value.kelas)
+    .replace("#IDEDIT#", value._id)
+    .replace("#IDHAPUS#", value._id)
     .replace("#WARNA#", getRandomColor())
     .replace(/#WARNALOGO#/g, getRandomColorName());
-addInner("iniTabelmhs", content);
+addInner("iniTabelMahasiswa", content);
 }
 
 function isiRowDosen(value) {
-  let content = isiTabeldsn
+  let content = Tabeldosen
       .replace("#NAMA#", value.nama)
       .replace("#NID#", value.nid)
       .replace("#PRODI#", value.prodi.nama)
+      .replace("#IDEDIT#", value._id)
+      .replace("#IDHAPUS#", value._id)
       .replace("#WARNA#", getRandomColor())
       .replace(/#WARNALOGO#/g, getRandomColorName());
-  addInner("iniTabeldsn", content);
+  addInner("iniTabelDosen", content);
 }

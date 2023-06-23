@@ -1,70 +1,40 @@
-function showPresensi() {
-  document.getElementById("iniTabelPresensi").style.display = "";
+function TampilProyek1() {
+  document.getElementById("iniTabelproyek1").style.display = "";
+  document.getElementById("iniTabelproyek2").style.display = "none";
+  document.getElementById("iniTabelproyek3").style.display = "none";
   document.getElementById("iniTabelMahasiswa").style.display = "none";
-  document.getElementById("iniTabelKelas").style.display = "none";
-  document.getElementById("iniTabelProdi").style.display = "none";
-  document.getElementById("iniTabelMatkul").style.display = "none";
   document.getElementById("iniTabelDosen").style.display = "none";
-  document.getElementById("iniTabelRuangan").style.display = "none";
-  document.getElementById("text").innerText = "Data Presensi";
+  document.getElementById("text").innerText = "Proyek 1";
 }
-function showMahasiswa() {
-  document.getElementById("iniTabelPresensi").style.display = "none";
+function TampilProyek2() {
+  document.getElementById("iniTabelproyek1").style.display = "none";
+  document.getElementById("iniTabelproyek2").style.display = "";
+  document.getElementById("iniTabelproyek3").style.display = "none";
+  document.getElementById("iniTabelMahasiswa").style.display = "none";
+  document.getElementById("iniTabelDosen").style.display = "none";
+  document.getElementById("text").innerText = "Proyek 2";
+}
+function TampilProyek3() {
+  document.getElementById("iniTabelproyek1").style.display = "none";
+  document.getElementById("iniTabelproyek2").style.display = "none";
+  document.getElementById("iniTabelproyek3").style.display = "";
+  document.getElementById("iniTabelMahasiswa").style.display = "none";
+  document.getElementById("iniTabelDosen").style.display = "none";
+  document.getElementById("text").innerText = "Proyek 3";
+}
+function TampilMahasiswa() {
+  document.getElementById("iniTabelproyek1").style.display = "none";
+  document.getElementById("iniTabelproyek2").style.display = "none";
+  document.getElementById("iniTabelproyek3").style.display = "none";
   document.getElementById("iniTabelMahasiswa").style.display = "";
-  document.getElementById("iniTabelKelas").style.display = "none";
-  document.getElementById("iniTabelProdi").style.display = "none";
-  document.getElementById("iniTabelMatkul").style.display = "none";
   document.getElementById("iniTabelDosen").style.display = "none";
-  document.getElementById("iniTabelRuangan").style.display = "none";
-  document.getElementById("text").innerText = "Data Mahasiswa";
+  document.getElementById("text").innerText = "Mahasiswa";
 }
-function showKelas() {
-  document.getElementById("iniTabelPresensi").style.display = "none";
+function TampilDosen() {
+  document.getElementById("iniTabelproyek1").style.display = "none";
+  document.getElementById("iniTabelproyek2").style.display = "none";
+  document.getElementById("iniTabelproyek3").style.display = "none";
   document.getElementById("iniTabelMahasiswa").style.display = "none";
-  document.getElementById("iniTabelKelas").style.display = "";
-  document.getElementById("iniTabelProdi").style.display = "none";
-  document.getElementById("iniTabelMatkul").style.display = "none";
-  document.getElementById("iniTabelDosen").style.display = "none";
-  document.getElementById("iniTabelRuangan").style.display = "none";
-  document.getElementById("text").innerText = "Data Kelas";
-}
-function showProdi() {
-  document.getElementById("iniTabelPresensi").style.display = "none";
-  document.getElementById("iniTabelMahasiswa").style.display = "none";
-  document.getElementById("iniTabelKelas").style.display = "none";
-  document.getElementById("iniTabelProdi").style.display = "";
-  document.getElementById("iniTabelMatkul").style.display = "none";
-  document.getElementById("iniTabelDosen").style.display = "none";
-  document.getElementById("iniTabelRuangan").style.display = "none";
-  document.getElementById("text").innerText = "Data Prodi";
-}
-function showMatkul() {
-  document.getElementById("iniTabelPresensi").style.display = "none";
-  document.getElementById("iniTabelMahasiswa").style.display = "none";
-  document.getElementById("iniTabelKelas").style.display = "none";
-  document.getElementById("iniTabelProdi").style.display = "none";
-  document.getElementById("iniTabelMatkul").style.display = "";
-  document.getElementById("iniTabelDosen").style.display = "none";
-  document.getElementById("iniTabelRuangan").style.display = "none";
-  document.getElementById("text").innerText = "Data Mata Kuliah";
-}
-function showDosen() {
-  document.getElementById("iniTabelPresensi").style.display = "none";
-  document.getElementById("iniTabelMahasiswa").style.display = "none";
-  document.getElementById("iniTabelKelas").style.display = "none";
-  document.getElementById("iniTabelProdi").style.display = "none";
-  document.getElementById("iniTabelMatkul").style.display = "none";
   document.getElementById("iniTabelDosen").style.display = "";
-  document.getElementById("iniTabelRuangan").style.display = "none";
-  document.getElementById("text").innerText = "Data Dosen";
-}
-function showRuangan() {
-  document.getElementById("iniTabelPresensi").style.display = "none";
-  document.getElementById("iniTabelMahasiswa").style.display = "none";
-  document.getElementById("iniTabelKelas").style.display = "none";
-  document.getElementById("iniTabelProdi").style.display = "none";
-  document.getElementById("iniTabelMatkul").style.display = "none";
-  document.getElementById("iniTabelDosen").style.display = "none";
-  document.getElementById("iniTabelRuangan").style.display = "";
-  document.getElementById("text").innerText = "Data Ruangan";
+  document.getElementById("text").innerText = "Dosen";
 }

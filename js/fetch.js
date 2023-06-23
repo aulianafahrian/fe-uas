@@ -1,6 +1,8 @@
 import { get } from "https://bukulapak.github.io/api/process.js";
-import { isiTable, isiTabelmahasiswa, isiTabeldosen } from "./controller/get.js";
-import { urlAPI, urlAPIdsn, urlAPImhs } from "./config/url.js";
-get(urlAPI, isiTable);
-get(urlAPImhs, isiTabelmahasiswa);
-get(urlAPIdsn, isiTabeldosen);
+import { isiTabelProyek, isiTabelMahasiswa, isiTabelDosen, test, test2 } from "./controller/get.js";
+import { urlAPIproyek, urlAPImahasiswa, urlAPIdosen, urlAPItest, urlAPItest2 } from "./config/url.js";
+get(urlAPIproyek, isiTabelProyek);
+get(urlAPImahasiswa, isiTabelMahasiswa);
+get(urlAPIdosen, isiTabelDosen);
+get(urlAPItest, test);
+get(urlAPItest2, test2);
