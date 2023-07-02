@@ -24,7 +24,7 @@ export let TabelProyek = `
     <th class="whitespace-nowrap px-4 bg-white text-sm font-medium text-coolGray-800 text-center">#TANGGALSIDANG#</th>
     <th class="whitespace-nowrap px-4 bg-white text-sm font-medium text-coolGray-800 text-center">#RUANGSIDANG#</th>
     <th class="whitespace-nowrap pr-4 bg-white text-sm font-medium text-coolGray-800">
-    <a type="button" href="detail.html?presensiId=#IDDETAIL#"> Detail
+    <a type="button" href="detail_proyek.html?proyekId=#IDDETAIL#"> Detail
     </a>
     |
     <a type="button" href="edit_dataDosen.html?presensiId=#IDEDIT#"> Edit
@@ -71,9 +71,6 @@ export let Tabelmahasiswa = `
     </div>
     </th>
     <th class="whitespace-nowrap pr-4 bg-white text-sm font-medium text-coolGray-800">
-    <a type="button" href="detail.html?presensiId=#IDDETAIL#"> Detail
-    </a>
-    |
     <a type="button" href="edit_dataMahasiswa.html?proyekmahasiswaId=#IDEDIT#"> Edit
     </a>
     |
@@ -111,9 +108,6 @@ export let Tabeldosen = `
     </div>
     </th>
     <th class="whitespace-nowrap pr-4 bg-white text-sm font-medium text-coolGray-800">
-    <a type="button" href="detail.html?presensiId=#IDDETAIL#"> Detail
-    </a>
-    |
     <a type="button" href="edit_dataDosen.html?proyekdosenId=#IDEDIT#"> Edit
     </a>
     |

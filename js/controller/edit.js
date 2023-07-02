@@ -1,7 +1,7 @@
 export function isiDataDosen(results) {  
     const inputMapping = [
-      { id: 'nid', path: '1.Value'},
-      { id: 'nama', path: '2.Value' },
+      { id: 'nid', path: 'nid'},
+      { id: 'nama', path: 'nama' },
       // { id: 'durasi', path: 'biodata.jam_kerja', index: 0, property: 'durasi'  },
     ];
   
@@ -12,8 +12,41 @@ export function isiDataDosen(results) {
     });
   }
 
-
+  export function isiDataMahasiswa(results) {  
+    const inputMapping = [
+      { id: 'npm', path: 'npm'},
+      { id: 'namamhs', path: 'nama' },
+      { id: 'kelas', path: 'kelas' },
+      // { id: 'jurusan', path: '4.Value' },
+      // { id: 'prodi', path: '5.Value' },
+    ];
   
+    inputMapping.forEach(({ id, path, index, property }) => {
+      const inputElement = document.getElementById(id);
+      const value = getNestedValue(results, path, index, property);
+      inputElement.value = value;
+    });
+  }
+  
+  export function isiDataProyek(results) {  
+    const inputMapping = [
+      
+      { id: 'tipeproyek', path: 'tipe_proyek'},
+      { id: 'npm', path: 'biodata_mahasiswa.npm'},
+      { id: 'mhs1', path: 'biodata_mahasiswa.nama'},
+      { id: 'namamhs', path: 'nama' },
+      { id: 'kelas', path: 'kelas' },
+      // { id: 'jurusan', path: '4.Value' },
+      // { id: 'prodi', path: '5.Value' },
+    ];
+  
+    inputMapping.forEach(({ id, path, index, property }) => {
+      const inputElement = document.getElementById(id);
+      const value = getNestedValue(results, path, index, property);
+      inputElement.value = value;
+    });
+  }
+
   function getNestedValue(obj, path, index, property) {
     const value = path.split('.').reduce((value, key) => (value && value[key]) ? value[key] : '', obj);
     // console.log(`Value at path ${path}:`, value);

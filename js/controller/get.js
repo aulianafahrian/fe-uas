@@ -1,12 +1,7 @@
 import { addInner } from "https://bukulapak.github.io/element/process.js";
 import { getRandomColor, getRandomColorName } from "https://bukulapak.github.io/image/process.js";
 import { TabelProyek, Tabelmahasiswa, Tabeldosen} from "../temp/table.js";
-export function test(results) {
-  console.log(results)
-}
-export function test2(results) {
-  console.log(results)
-}
+
 export function isiTabelProyek(results) {
   results.forEach(isiRowProyek);
 }
@@ -28,6 +23,8 @@ function isiRowProyek(value) {
       .replace("#KELASPARTNER#", value.partner_mahasiswa.kelas)
       .replace("#TANGGALSIDANG#", value.tanggal_sidang)
       .replace("#RUANGSIDANG#", value.ruang_sidang)
+      .replace("#IDEDIT#", value._id)
+      .replace("#IDHAPUS#", value._id)
       .replace("#WARNA#", getRandomColor())
       .replace(/#WARNALOGO#/g, getRandomColorName());
   addInner("iniTabelproyek1", content);
@@ -41,6 +38,8 @@ function isiRowProyek(value) {
       .replace("#KELASPARTNER#", value.partner_mahasiswa.kelas)
       .replace("#TANGGALSIDANG#", value.tanggal_sidang)
       .replace("#RUANGSIDANG#", value.ruang_sidang)
+      .replace("#IDEDIT#", value._id)
+      .replace("#IDHAPUS#", value._id)
       .replace("#WARNA#", getRandomColor())
       .replace(/#WARNALOGO#/g, getRandomColorName());
   addInner("iniTabelproyek2", content);
@@ -54,6 +53,8 @@ function isiRowProyek(value) {
       .replace("#KELASPARTNER#", value.partner_mahasiswa.kelas)
       .replace("#TANGGALSIDANG#", value.tanggal_sidang)
       .replace("#RUANGSIDANG#", value.ruang_sidang)
+      .replace("#IDEDIT#", value._id)
+      .replace("#IDHAPUS#", value._id)
       .replace("#WARNA#", getRandomColor())
       .replace(/#WARNALOGO#/g, getRandomColorName());
   addInner("iniTabelproyek3", content);

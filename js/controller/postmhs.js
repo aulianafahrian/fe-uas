@@ -12,7 +12,7 @@ function pushDataMahasiswa(){
             nama :"Teknik Informatika",
         },
         prodi : {
-            nama : "D4 Teknik Informatika",
+            nama : "Sarjana Terapan",
         }
     }
     postData(urlPOSTmahasiswa, data, AmbilResponse);
