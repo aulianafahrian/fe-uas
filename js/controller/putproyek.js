@@ -44,4 +44,4 @@ function pushDataProyek(){
 
 }
 
-onClick("buttonproyek", pushDataProyek);
+onClick("buttoneditproyek", pushDataProyek);
