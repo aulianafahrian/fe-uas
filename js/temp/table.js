@@ -27,7 +27,7 @@ export let TabelProyek = `
     <a type="button" href="detail_proyek.html?proyekId=#IDDETAIL#"> Detail
     </a>
     |
-    <a type="button" href="edit_dataDosen.html?presensiId=#IDEDIT#"> Edit
+    <a type="button" href="edit_Proyek.html?presensiId=#IDEDIT#"> Edit
     </a>
     |
     <button type="button" id="del_button" onclick="deleteDataProyek('#IDHAPUS#')"> Delete

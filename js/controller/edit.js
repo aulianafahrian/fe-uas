@@ -32,12 +32,13 @@ export function isiDataDosen(results) {
     const inputMapping = [
       
       { id: 'tipeproyek', path: 'tipe_proyek'},
-      { id: 'npm', path: 'biodata_mahasiswa.npm'},
+      { id: 'judulproyek', path: 'judul'},
       { id: 'mhs1', path: 'biodata_mahasiswa.nama'},
-      { id: 'namamhs', path: 'nama' },
-      { id: 'kelas', path: 'kelas' },
-      // { id: 'jurusan', path: '4.Value' },
-      // { id: 'prodi', path: '5.Value' },
+      { id: 'mhs2', path: 'partner_mahasiswa.nama'},
+      { id: 'dospem', path: 'dosen_pembimbing.nama' },
+      { id: 'dosuji', path: 'dosen_penguji.nama' },
+      { id: 'tanggalsidang', path: 'tanggal_sidang' },
+      { id: 'ruangsidang', path: 'ruang_sidang' },
     ];
   
     inputMapping.forEach(({ id, path, index, property }) => {
