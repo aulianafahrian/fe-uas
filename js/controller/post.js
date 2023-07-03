@@ -1,6 +1,6 @@
 import { postData } from "https://bukulapak.github.io/api/process.js";
 import { onClick, getValue } from "https://bukulapak.github.io/element/process.js";
-import { urlPOSTdosen, AmbilResponse, urlPOSTmahasiswa} from "../config/url_post.js";
+import { urlPOSTdosen, AmbilResponse} from "../config/url_post.js";
 
 
 function pushDataDosen(){
